@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Nosgoth Looking For More!</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div class="navbar navbar-fixed-top navbar-inverse">
+    	<div class="container">
+    		<% if session.key? :current_user %>
+    			<%= link_to image_tag(session[:current_user].fetch('image'), :class => 'header_img'), session[:current_user].fetch('profile'), :class => 'navbar-brand', :target => "_blank" %>
+    		<% else %>
+    			<%= link_to image_tag("http://cdn.steamcommunity.com/public/images/signinthroughsteam/sits_large_noborder.png", :class => 'header_img'), '/auth/steam', :class => 'navbar-brand' %>
+    		<% end %>
+      		<div class="collapse navbar-collapse">
+      			<ul class="nav navbar-nav">
+        			<li><p class="navbar-btn"><a href="#" class="btn btn-success">Home</a></p></li>
+        			<li><p class="navbar-btn"><a href="http://steamcommunity.com/app/200110" class="btn btn-primary" target="_blank">Steam Community</a></p></li>
+        			<li><p class="navbar-btn"><a href="steam://run/200110" class="btn btn-danger">Play Now</a></p></li>
+      			</ul>
+    		</div><!--/.nav-collapse -->
+    	</div><!-- /.container -->
+	</div><!-- /.navbar -->
+
+<!-- HEADER 
+=================================-->
+
+<div class="jumbotron text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col col-lg-12 col-sm-12">
+          <% if session.key? :current_user %>
+          	<h1>Welcome, <%= session[:current_user].fetch('nickname') %>!</h1>
+          <% else %>
+            <h1>Welcome!</h1>
+          <% end %>
+        </div>
+      </div>
+    </div> 
+</div>
+<!-- /header container-->
+<%= yield %>
+
+</body>
+</html>

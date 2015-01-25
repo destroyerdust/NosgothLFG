@@ -1,0 +1,31 @@
+/* ...
+*= require bootstrap.min
+*= require_self
+*= require_tree .
+ *= require dataTables/jquery.dataTables
+*/
+
+.header_img {
+	height: 200%;
+	margin-top: -10px;
+	margin-right: -10px;
+}
+
+/** Top Button Margins **/
+body > div.navbar.navbar-fixed-top.navbar-inverse > div > div > ul > li > p > a {
+	margin-right: 3px;
+}
+
+/** Temp Fix for jumbotron being huge! **/
+.jumbotron.text-center {
+  padding-bottom: 0px;
+}
+
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('../assets/glyphicons-halflings-regular.eot');
+  src: url('../assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), 
+       url('../assets/glyphicons-halflings-regular.woff') format('woff'), 
+       url('../assets/glyphicons-halflings-regular.ttf') format('truetype'), 
+       url('../assets/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}

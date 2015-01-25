@@ -1,0 +1,73 @@
+<!-- CONTENT =================================-->
+	<div class="container">
+		<div class="row">
+				<% if session.key? :current_user %>
+					<%= simple_form_for :player, :url => players_path, :html => { :class => "form-horizontal" } do |p| %>
+
+						<div class="col-lg-offset-1 col-lg-3">
+							<%= p.input :vampire, :label => 'Prefered Vampire', :collection => ["Deciever", "Reaver", "Sentinal", "Tyrant"], :required => false %>
+						</div>
+						<div class="col-lg-3">
+							<%= p.input :human, :label => 'Prefered Human', :collection => ["Alchemist", "Hunter", "Prophet", "Scout"], :required => false %>
+						</div>
+						<div class="col-lg-3">
+							<%= p.input :region, :collection => ["US West", "US East", "Europe", "Australia", "Japan"], :required => false %>
+						</div>
+						<div class="col-lg-1"></div>
+						<div class="col-lg-offset-1 col-lg-9">
+							<%= p.input :comment, :required => false %>
+						</div>
+						<div class="col-lg-offset-1 col-lg-10">
+							<%= p.button :submit %>
+						</div>
+					<% end %>
+				<% end %>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<h1>Players</h1>
+
+				<table id="players">
+					<thead>
+						<tr>
+							<th>Avatar</th>
+							<th>Nickname</th>
+							<th>Region</th>
+							<th>Pref Vampire</th>
+							<th>Pref Human</th>
+							<th>Comment</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @players.each do |player| %>
+						<tr>
+							<td><%= link_to image_tag(player.avatarurl), player.steamprofile_url, :target => "_blank"  %></td>
+							<td><%= link_to player.nickname, player.steamprofile_url, :target => "_blank"  %></td>
+							<td><%= player.region %></td>
+							<td><%= player.vampire %></td>
+							<td><%= player.human %></td>
+							<td><%= player.comment %></td>
+						</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<hr>
+	<!-- /CONTENT ============-->
+	<!-- DEBUG =================================-->
+	<% if (session.key? :current_user) && session[:current_user].fetch('nickname') == 'DestroyerDust' %>
+	<h3>Current user:</h3>
+	<p>
+		<%= session[:current_user] %>
+	</p>
+	<%= image_tag session[:current_user].fetch('image') %>
+	<p><%= session[:current_user].fetch('nickname') %></p>
+	<p><%= session[:current_user].fetch('uid') %></p>
+	<p><%= session[:current_user].fetch('profile') %></p>
+	<a href="http://steamcommunity.com/app/200110">Steam Community</a>
+
+
+	<p><%= @Nosgoth %></p>
+	<% end %>

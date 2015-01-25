@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  avatarurl: MyString
+  nickname: MyString
+  steamid: MyString
+  vampire: MyString
+  human: MyString
+  comment: MyText
+
+two:
+  avatarurl: MyString
+  nickname: MyString
+  steamid: MyString
+  vampire: MyString
+  human: MyString
+  comment: MyText
