@@ -19,6 +19,9 @@
         			<li><p class="navbar-btn"><a href="#" class="btn btn-success">Home</a></p></li>
         			<li><p class="navbar-btn"><a href="http://steamcommunity.com/app/200110" class="btn btn-primary" target="_blank">Steam Community</a></p></li>
         			<li><p class="navbar-btn"><a href="steam://run/200110" class="btn btn-danger">Play Now</a></p></li>
+              <% if session.key? :current_user %>
+                <li><p class="navbar-btn"><%= link_to "Sign Out", session_path, :method => :delete, :class => 'btn btn-warning' %></p></li>
+              <% end %>
       			</ul>
     		</div><!--/.nav-collapse -->
     	</div><!-- /.container -->

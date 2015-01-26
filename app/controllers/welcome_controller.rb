@@ -21,4 +21,10 @@ class WelcomeController < ApplicationController
                                :profile => auth.info.urls['Profile'] }
     redirect_to root_url
   end
+
+  def session_logout
+    session.clear
+    redirect_to root_url
+  end
+
 end
